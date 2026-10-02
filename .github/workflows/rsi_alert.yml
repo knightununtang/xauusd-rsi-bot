@@ -35,4 +35,11 @@ jobs:
           TIMEFRAME: '5m'
           RSI_PERIOD: '14'
         run: |
-          python main.py --once
+          for i in {1..5}; do
+            echo "=== Executing RSI Check Cycle $i of 5 ==="
+            python main.py --once
+            if [ $i -lt 5 ]; then
+              sleep 60
+            fi
+          done
+
